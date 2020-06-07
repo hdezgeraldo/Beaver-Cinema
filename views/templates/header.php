@@ -3,10 +3,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link rel="stylesheet" href="../styling/normalize.css">
-	<link rel="stylesheet" href="../styling/style.css">
-
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../public/css/normalize.css">
+	<link rel="stylesheet" href="../public/css/style.css">
 
 	<title>Home Page</title>
 </head>
@@ -14,7 +12,7 @@
 	<div class="wrap">
 		<header class="main-header">
 			<div class="container c-header">
-			<a href="index.php"><img src="../styling/images/beaver_logo.png" class="logo"></a>
+			<a href="index.php"><img src="../public/images/beaver_logo.png" class="logo"></a>
 				<ul class="main-nav">
 					<li><a href="search.php">Search</a></li>
 					<li><a href="update.php">Update</a></li>

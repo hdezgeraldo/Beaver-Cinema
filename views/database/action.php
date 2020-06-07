@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include("../backend/db_connection.php");
+	include("db_connection.php");
 	$conn = OpenCon();
 
 	$isEdit = false;

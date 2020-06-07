@@ -1,8 +1,8 @@
 <?php
 
 $pageTitle = "Update";
-include("action.php");
-include("header.php");	?>
+include("database/action.php");
+include("templates/header.php");	?>
 		<!-- This is the start of CSS Grid style -->
 		<div class="container grid">
 			<!-- This is the page title -->
@@ -95,4 +95,4 @@ include("header.php");	?>
 		</div>
 	</div>
 
-<?php include("footer.php");	?>
+<?php include("templates/footer.php");	?>

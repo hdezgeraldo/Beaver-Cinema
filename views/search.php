@@ -6,7 +6,7 @@
 
 $pageTitle = "Search Page";
 
-include("header.php");	?>
+include("templates/header.php");	?>
 
 		<div class="container grid">
 			<div>
@@ -33,4 +33,4 @@ include("header.php");	?>
 	</div>
 
 
-<?php include("footer.php");	?>
+<?php include("templates/footer.php");	?>

@@ -2,8 +2,8 @@
 
 $pageTitle = "Movie Page";
 
-include("header.php");
-include("../backend/db_connection.php");	?>
+include("templates/header.php");
+include("database/db_connection.php");	?>
 
 		<div class="container grid">
 			<div class="box title">
@@ -60,4 +60,4 @@ include("../backend/db_connection.php");	?>
 		</div>
 	</div>
 
-<?php include("footer.php");	?>
+<?php include("templates/footer.php");	?>

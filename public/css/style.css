@@ -11,8 +11,8 @@
 	Fonts
 ================================================ */
 @font-face {
-	font-family: 'Varela Round';
-	src: url('fonts/Nunito-Light.ttf') format('truetype');
+	font-family: 'Nunito';
+	src: url('../fonts/Nunito-Light.ttf') format('truetype');
 }
 
 /*  =============================================
@@ -22,7 +22,7 @@
 body {
 	line-height: 1.6;
 	color: #3a3a3a;
-	font-family: 'Varela Round', sans-serif;
+	font-family: 'Nunito', sans-serif;
 	line-height: 1.6;
 	color: #3a3a3a;
 	background: rgb(48, 46, 46);
@@ -217,15 +217,15 @@ a.social:hover {
 
 
 a.twitter {
-	background-image: url('images/twitter.svg');
+	background-image: url("../images/twitter.svg");
 }
 
 a.facebook {
-	background-image: url('images/facebook.svg');
+	background-image: url("../images/facebook.svg");
 }
 
 a.instagram {
-	background-image: url('images/instagram.svg');
+	background-image: url("../images/instagram.svg");
 }
 
 /*  =============================================
