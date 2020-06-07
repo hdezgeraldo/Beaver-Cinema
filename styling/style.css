@@ -1,0 +1,566 @@
+/*  =============================================
+	Global Layout Styles
+================================================ */
+
+/* ---- Forces padding/borders into container ---- */
+* {
+	box-sizing: border-box;
+}
+
+/*  =============================================
+	Fonts
+================================================ */
+@font-face {
+	font-family: 'Varela Round';
+	src: url('fonts/Nunito-Light.ttf') format('truetype');
+}
+
+/*  =============================================
+	Base Element Styles
+================================================ */
+
+body {
+	line-height: 1.6;
+	color: #3a3a3a;
+	font-family: 'Varela Round', sans-serif;
+	line-height: 1.6;
+	color: #3a3a3a;
+	background: rgb(48, 46, 46);
+}
+
+p {
+	font-size: .95em;
+	margin-bottom: 1.5em;
+}
+
+h2,
+h3,
+a {
+	color: black;
+}
+
+h2,
+h3 {
+	margin-top: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+/*  =============================================
+	Base Layout Styles
+================================================ */
+
+/* ---- Navigation ---- */
+.logo {
+	height: 75px;
+	padding-top: 10px;
+}
+
+.name {
+	font-size: 1.25em;   /* remove all extra space above/below name heading */
+}
+
+.name,
+.main-nav li {
+	text-align: center;
+	background: #fff;
+	margin-top: 6px;
+	margin-bottom: 6px;
+}
+
+.main-nav {
+	font-size: 0;
+	padding-top: 20px;
+}
+
+.main-nav li {
+	font-size: 1rem;
+	margin-right: 5px;
+}
+
+.main-nav a {
+	font-size: .95em;
+	color: black;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.main-nav a:hover {
+	color: #ca3a3a;
+}
+
+.name a,
+.main-nav a {
+	padding: 10px 15px;
+	display: block;
+}
+
+/* ---- Layout Containers ---- */
+.c-header {
+	padding-left: 1em;
+	padding-right: 1em;
+	display: flex;
+	justify-content: space-between;
+}
+
+.main-header {
+	background: white;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 80px;
+	border-bottom: 1.6px solid rgb(204, 204, 204);
+}
+
+.main-footer {
+	text-align: center;
+	padding-top: 1em;
+	padding-bottom: 2em;
+	background: rgb(48, 46, 46);
+	color: white;
+	height: 100px;
+}
+
+.main-footer ul li {
+	display: inline-block;
+}
+
+.footer-container {
+	padding: 25px;
+}
+
+/*  =============================================
+	Dropdown Menu
+================================================ */
+.dropdown {
+	position: relative;
+}
+
+.drop-nav {
+	position: absolute;
+	display: none;
+}
+
+.drop-nav li {
+	font-size: .8rem;
+	margin: 0 auto;
+	padding: 3px 18px;
+	border-bottom: 1px solid rgba(0, 0, 0, .8);
+	width: 100%;
+}
+
+.dropdown:hover > .drop-nav {
+	display: block;
+}
+
+/*  =============================================
+	Search Bar
+================================================ */
+.search {
+	width: 100%;
+	position: relative;
+	display: flex;
+}
+
+.searchTerm {
+	width: 50%;
+	border: 3px solid darkred;
+	padding: 5px;
+	height: 40px;
+	border-radius: 10px 0 0 10px;
+	outline: none;
+	color: black;
+}
+
+.searchButton {
+	width: 5%;
+	height: 40px;
+	border: 3px solid darkred;
+	background: darkred;
+	border-radius: 0 10px 10px 0;
+	cursor: pointer;
+	font-size: 20px;
+}
+
+.searchButton i:hover {
+	color: white;
+}
+
+.searchTitle {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 1.5rem;
+}
+
+/*  =============================================
+	Footer Layout Styles
+================================================ */
+
+a.social {
+	display: inline-block;
+	text-indent: -9999px;
+	margin-left: 5px;
+	margin-bottom: 10px;
+	width: 30px;
+	height: 30px;
+	background-size: 30px 30px;
+	opacity: .6;
+	transition: all .25s;
+}
+
+a.social:hover {
+	opacity: 1;
+}
+
+
+a.twitter {
+	background-image: url('images/twitter.svg');
+}
+
+a.facebook {
+	background-image: url('images/facebook.svg');
+}
+
+a.instagram {
+	background-image: url('images/instagram.svg');
+}
+
+/*  =============================================
+	Clearfix "hack"
+================================================ */
+.group:after {
+	content: "";
+	display: table;
+	clear:both;
+}
+
+/*  =============================================
+	Media Queries
+================================================ */
+
+/* ---- Only devices that are 769 pixels or wider ----  */
+@media (min-width: 769px) {
+
+	/* ---- Viewport Height for Sticky Footer ---- */
+	.wrap {
+		/* 100% of the viewport height minus fixed footer height */
+		min-height: 1000px;
+		background-color: rgb(231, 231, 231);
+	}
+	
+	.container {
+		width: 100%;
+		max-width: 1150px;
+		margin: 0 auto;
+	}
+
+	.name,
+	.main-nav,
+	.main-nav li {
+		display: inline-block;
+	}
+
+	.name {
+		width: 240px;
+		margin-right: 50px;
+	}
+}
+
+/*  =============================================
+	CSS Grid
+================================================ */
+.grid{
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: 0.5em;
+	justify-items:stretch;
+	align-items:stretch;
+	padding-bottom: 50px;
+	margin-top: 80px;
+}
+
+.title {
+	margin-bottom: 1.5rem;
+	margin-top: 1rem;
+	text-align: center;
+}
+
+.form {
+	margin-bottom: 1.5rem;
+	margin-top: 1.5rem;
+	text-align: center;
+}
+
+.table-box {
+	margin-bottom: 1.5rem;
+	text-align: center;
+}
+
+.trending {
+	padding: 10px 10px;
+}
+
+.trending a:hover {
+	color: #ca3a3a;
+}
+
+.movies{
+	display:grid;
+	grid-template-columns: repeat(3, .5fr);
+	grid-auto-columns:minmax(100px, auto);
+	justify-items:stretch;
+	align-items:stretch;
+	margin-top: 1rem;
+}
+
+.box-update{
+	display:grid;
+	grid-template-columns: 1fr 2fr;
+	grid-auto-columns:minmax(200px, auto);
+	justify-items:stretch;
+	align-items:stretch;
+	margin-top: 0.5rem;
+}
+
+.movie-card h3 {
+	text-align: center;
+}
+
+.movie-card img {
+	width: 220px;
+	height: 290px;
+	display: block;
+	margin: 0 auto;
+}
+
+.movie-card img:hover {
+	box-shadow: 3px 3px 10px 1px rgba(100, 100, 100, .9);
+}
+
+
+/*  =============================================
+	Table Styling
+================================================ */
+table{
+	width: 85%;
+	table-layout: fixed;
+	padding: 0;
+	border-spacing: 0;
+	border: 2px solid rgb(49, 49, 49);
+	margin: 0 auto;
+}
+
+.customer-table{
+	width: 100%;
+}
+
+.customer-table th {
+	font-size: 15px;
+	word-wrap: break-word;
+}
+
+.customer-table .header-row {
+	height: 50px;
+}
+
+.customer-table td {
+	font-size: 15px;
+	word-wrap: break-word;
+}
+
+.customer-table td:nth-child(1), .customer-table th:nth-child(1), 
+.customer-table th:nth-child(2), .customer-table th:nth-child(2){
+	width: 95px;
+}
+
+.customer-table th:nth-child(4), .customer-table th:nth-child(4){	
+	width: 105px;
+}
+
+.customer-table td:nth-child(3), .customer-table th:nth-child(3){
+	width: 150px;
+}
+
+.customer-table td:nth-child(5), .customer-table th:nth-child(5){
+	width: 185px;
+}
+
+.tbl-content{ 
+	height:300px;
+	overflow-x:auto;
+	margin-top: 0px;
+	border: 1px solid rgba(12, 12, 12, 0.3);
+}
+
+.header-row {
+	height: 60px;
+}
+
+th{
+	text-align: left;
+	padding: 5px 5px;
+	font-size: 15px;
+	color: #fff;
+	text-transform: uppercase;
+	background: rgb(48, 46, 46);
+	border: 2px solid rgb(182, 181, 181);
+}
+
+td{
+	padding: 5px;
+	text-align: left;
+	vertical-align:middle;
+	font-weight: 300;
+	font-size: 15px;
+	color: rgb(43, 43, 43);
+	border-bottom: solid 1px rgba(255,255,255,0.1);
+	line-height: 20px;
+	border: 2px solid rgb(49, 49, 49);
+}
+
+tr {
+	height: 50px;
+}
+
+.center-column {
+	text-align: center;
+}
+
+.movie-table td:nth-child(1), .movie-table th:nth-child(1){
+	width: 250px;
+}
+
+.movie-table td:nth-child(2), .movie-table th:nth-child(2), 
+.movie-table th:nth-child(3), .movie-table th:nth-child(3){
+	width: 120px;
+}
+
+.actor-table td:nth-child(1), .actor-table th:nth-child(1), 
+.actor-table th:nth-child(2), .actor-table th:nth-child(2){
+	width: 160px;
+}
+
+.actor-table th:nth-child(4), .actor-table th:nth-child(4){
+	width: 200px;
+}
+
+.edit-button{
+	background: rgb(35, 153, 51);
+	padding: 2px 10px 2px 10px;
+	border-radius: 5px;
+	color: #fff;
+	border: 1px solid rgb(35, 153, 51);
+	font-size: 15px;
+}
+ 
+.edit-button:hover{
+	background: rgb(28, 122, 40);
+}
+
+.delete-button{
+	background: rgb(194, 45, 45);
+	padding: 2px 10px 2px 10px;
+	border-radius: 5px;
+	color: #fff;
+	border: 1px solid rgb(194, 45, 45);
+	font-size: 15px;
+}
+ 
+.delete-button:hover{
+	background: rgb(138, 32, 32);
+}
+
+.name-button:hover {
+	text-decoration: underline;
+	color: rgb(12, 122, 211);
+}
+
+/*  =============================================
+	Form Styling
+================================================ */
+
+.edit-customer-form input[type="text"],
+.edit-customer-form input[type="email"],
+.edit-customer-form input[type="number"],
+.edit-customer-form input[type="tel"] {
+	background: rgba(255,255,255,.1);
+	border: none;
+	border-radius: 4px;
+	font-size: 15px;
+	margin: 0;
+	outline: 0;
+	padding: 10px;
+	width: 100%;
+	box-sizing: border-box; 
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box; 
+	background-color: #ffffff;
+	color:#666666;
+	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	margin-bottom: 10px;
+}
+
+.button-submit{
+	background: rgb(45, 122, 194);
+	padding: 8px 20px 8px 20px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	color: #fff;
+	-moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	-webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	border: 1px solid rgb(37, 100, 158);
+	font-size: 15px;
+}
+
+.button-submit:hover{
+	background: rgb(37, 100, 158);
+	box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
+}
+
+.button-edit{
+	background: rgb(35, 153, 51);
+	padding: 8px 20px 8px 20px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	color: #fff;
+	-moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	-webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+	border: 1px solid rgb(35, 153, 51);
+	font-size: 15px;
+}
+
+.button-edit:hover{
+	background: rgb(23, 105, 34);
+	box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
+}
+
+.edit-customer-form h3 {
+	text-align: center;
+}
+
+.edit-customer-form form {
+	margin: 0 auto;
+	width: 90%
+}
+
+.success-alert{
+	padding: 15px;
+	background-color: rgb(82, 197, 98);
+	border-radius: 15px;
+	color: white;
+}
+
+.delete-alert{
+	padding: 15px;
+	background-color: rgb(206, 62, 62);
+	border-radius: 15px;
+	color: white;
+}
