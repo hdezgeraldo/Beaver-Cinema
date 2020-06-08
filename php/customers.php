@@ -1,13 +1,13 @@
 <?php
 
-$pageTitle = "Update";
+$pageTitle = "Customers";
 include("database/action.php");
 include("templates/header.php");	?>
 		<!-- This is the start of CSS Grid style -->
 		<div class="container grid">
 			<!-- This is the page title -->
 			<div class="box title">
-				<h2 class="title">Update Customer Database</h2>
+				<h2 class="title">Customer Database</h2>
 				<hr>
 				<?php	if(isset($_SESSION['response'])){	?>
 				<div class="alert <?php echo $_SESSION['res_type']; ?>">
@@ -21,7 +21,7 @@ include("templates/header.php");	?>
 				<div class="edit-customer-form">
 					<h3>Add/Edit Customer</h3>
 					
-					<form action="action.php" method="POST" enctype="multipart/form-data">
+					<form action="database/action.php" method="POST" enctype="multipart/form-data">
 							<input type="hidden" name="id" value="<?php echo $id; ?>">
 							<div class="form-group">
 								<input type="text" name="first_name" value="<?php echo $first_name; ?>" class="form-control" placeholder="Enter first name" required>
@@ -74,16 +74,16 @@ include("templates/header.php");	?>
 						<?php
 							while ($row = $result->fetch_assoc()): ?>
 								<tr>
-									<td><a href="#" class="name-button"><?php echo $row['first_name']; ?></a></td>
+									<td><a href="c_details.php?c_details=<?= $row['customer_id']; ?>" class="name-button"><?php echo $row['first_name']; ?></a></td>
 									<td><?php echo $row['last_name']; ?></td>
 									<td><?php echo $row['address']; ?></td>
 									<td><?php echo $row['phone']; ?></td>
 									<td><?php echo $row['email']; ?></td>
 									<td>
-										<a href="update.php?edit=<?php echo $row['customer_id']; ?>" 
+										<a href="customers.php?edit=<?php echo $row['customer_id']; ?>" 
 											class="edit-button">Edit</a>
 
-										<a href="action.php?delete=<?php echo $row['customer_id']; ?>" 
+										<a href="database/action.php?delete=<?php echo $row['customer_id']; ?>" 
 											class="delete-button">Delete</a>
 									</td>
 								</tr>

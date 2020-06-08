@@ -14,8 +14,8 @@
 			<div class="container c-header">
 			<a href="index.php"><img src="../public/images/beaver_logo.png" class="logo"></a>
 				<ul class="main-nav">
-					<li><a href="search.php">Search</a></li>
-					<li><a href="update.php">Update</a></li>
+					<li><a href="orders.php">Orders</a></li>
+					<li><a href="customers.php">Customers</a></li>
 					<li class="dropdown">
 						<a href="#">Browse &#9660;</a>
 						<ul class="drop-nav">

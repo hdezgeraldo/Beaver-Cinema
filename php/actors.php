@@ -14,13 +14,12 @@ include("database/db_connection.php");	?>
 			<div class="grid-movie">
 				<!-- Search "feature" -->
 				<div class="box search">
-					<input type="text" class="search-movie" placeholder="Enter movie name">
-					<input type="submit" class="button-submit" value="Search">
+					<!--  -->
 				</div>
 
 				<!-- Sort "feature" -->
 				<div class="box sort">
-					<form class="movie-sort" action="">
+					<!-- <form class="movie-sort" action="">
 							<label for="genre-list">Filter by Genre:</label>
 							<select class="genre-list" name="genre-list">
 								<option value="action">Action</option>
@@ -29,7 +28,7 @@ include("database/db_connection.php");	?>
 								<option value="horror">Horror</option>
 							</select>
 							<input type="submit" class="button-submit" value="Submit">
-					</form>
+					</form> -->
 				</div>
 
 				<!-- Insert "feature -->

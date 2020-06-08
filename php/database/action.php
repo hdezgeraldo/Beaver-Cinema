@@ -1,11 +1,21 @@
 <?php
 	session_start();
 	include("db_connection.php");
+
+	// Establish connection to database
 	$conn = OpenCon();
 
+	// Default variables
 	$isEdit = false;
+	$output = '';
 
-	// If user enters form data and hits submit
+	/***********************************************************
+	 * Type: HTTP POST method
+	 * Webpage: customers.php
+	 * Description: If the user enters values in the 'add new
+	 * customer' form and presses submit, then values will be
+	 * updated to the DB.
+	 **********************************************************/
 	if(isset($_POST['submit'])){
 
 		// set variables
@@ -21,13 +31,18 @@
 						or die($conn->error);
 		
 		// return to current page
-		header('location:update.php');
+		header('location:../customers.php');
 		
 		// success messages to echo at update.php
 		$_SESSION['response']="SUCCESSFULLY INSERTED TO DB";
 		$_SESSION['res_type']="success-alert";
 	}
 
+	/***********************************************************
+	 * Type: HTTP GET method
+	 * Webpage: customers.php
+	 * Description: 
+	 **********************************************************/
 	if(isset($_GET['delete'])){
 
 		// set variable
@@ -39,13 +54,18 @@
 					  or die($conn->error);
 
 		// return to current page
-		header('location:update.php');
+		header('location:../customers.php');
 
 		// success messages to echo at update.php
 		$_SESSION['response']="SUCCESSFULLY DELETED";
 		$_SESSION['res_type']="delete-alert";
 	}
 
+	/***********************************************************
+	 * Type: HTTP GET method
+	 * Webpage: customers.php
+	 * Description: 
+	 **********************************************************/
 	if(isset($_GET['edit'])){
 		// set variable
 		$id = $_GET['edit'];
@@ -65,6 +85,11 @@
 		$isEdit = true;
 	}
 
+	/***********************************************************
+	 * Type: HTTP POST method
+	 * Webpage: customers.php
+	 * Description: 
+	 **********************************************************/
 	if(isset($_POST['edit'])){
 		// set variables
 		$id = $_POST['id'];	// hidden id variable
@@ -78,10 +103,58 @@
 		$conn->query("UPDATE customer SET first_name='$first_name', last_name='$last_name', address='$address', phone='$phone', email='$email' WHERE customer_id=$id") or die($conn->error);
 
 		// return to current page
-		header('location:update.php');
+		header('location:../customers.php');
 
 		// success messages to echo at update.php
 		$_SESSION['response']="SUCCESSFULLY UPDATED TO DB";
+		$_SESSION['res_type']="success-alert";
+	}
+
+	/***********************************************************
+	 * Type: HTTP GET method
+	 * Webpage: customers.php and c_details.php
+	 * Description:
+	 **********************************************************/
+	if(isset($_GET['c_details'])){
+		$id = $_GET['c_details'];
+		$result = $conn->query("SELECT first_name, last_name, address, credit_number, credit_exp FROM customer AS c
+		INNER JOIN orders AS o ON o.customer_id=c.customer_id
+		WHERE c.customer_id=$id") or die($conn->error);
+		$row = $result->fetch_assoc();
+
+		//  Get all values from DB and store in variables
+		$vid = $row['customer_id'];
+		$vfirst = $row['first_name'];
+		$vlast = $row['last_name'];
+		$vaddress = $row['address'];
+		$vcredit = $row['credit_number'];
+		$vexp = $row['credit_exp'];
+	}
+
+	/***********************************************************
+	 * Type: HTTP POST method
+	 * Webpage: movies.php
+	 * Description: This will retrieve values submitted from the
+	 * 'Add Movie' form, and insert them into the database.
+	 **********************************************************/
+	if(isset($_POST['m-submit'])){
+
+		// set variables
+		$mtitle = $_POST['m-title'];
+		$mprice = $_POST['m-price'];
+		$mstock = $_POST['m-stock'];
+		$mdescription = $_POST['m-description'];
+
+		// begin query
+		$conn->query("INSERT INTO movies (title, price, num_stock, movie_description) 
+						VALUES ('$mtitle', $mprice, $mstock, '$mdescription')")
+						or die($conn->error);
+		
+		// return to current page
+		header('location:../movies.php');
+		
+		// success messages to echo at update.php
+		$_SESSION['response']="SUCCESSFULLY INSERTED TO DB";
 		$_SESSION['res_type']="success-alert";
 	}
 

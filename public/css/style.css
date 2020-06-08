@@ -164,6 +164,7 @@ a {
 	width: 100%;
 	position: relative;
 	display: flex;
+	height: 35px;
 }
 
 .searchTerm {
