@@ -293,8 +293,8 @@ a.instagram {
 }
 
 .title {
-	margin-bottom: 1.5rem;
-	margin-top: 1rem;
+	margin-bottom: 1rem;
+	margin-top: 1.5rem;
 	text-align: center;
 }
 
@@ -488,9 +488,13 @@ tbody > tr {
 	background: rgb(138, 32, 32);
 }
 
+a.name-button {
+	color: rgb(36, 103, 158);
+}
+
 .name-button:hover {
 	text-decoration: underline;
-	color: rgb(12, 122, 211);
+	color: rgb(211, 12, 12);
 }
 
 /*  =============================================
@@ -652,9 +656,10 @@ tbody > tr {
 }
 
 .movie-submit {
-	margin-left: 10rem;
+	margin-left: 11rem;
 }
 
 .search-movie {
-	margin-left:5rem;
+	margin-left: 5.4rem;
+	height: 35px;
 }
