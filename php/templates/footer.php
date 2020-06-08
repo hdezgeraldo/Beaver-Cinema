@@ -7,6 +7,8 @@
 		</ul>
 		<span class="copyright">Copyright &copy; Hernandez & Mayinger</span>
 	</div>
-	</footer>
+</footer>
+<script src="../public/js/main.js"></script>
 </body>
+
 </html>

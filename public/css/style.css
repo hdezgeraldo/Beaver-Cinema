@@ -26,6 +26,7 @@ body {
 	line-height: 1.6;
 	color: #3a3a3a;
 	background: rgb(48, 46, 46);
+	opacity: 1;
 }
 
 p {
@@ -282,6 +283,15 @@ a.instagram {
 	margin-top: 80px;
 }
 
+.grid-movie{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 0.5em;
+	justify-items:stretch;
+	align-items:stretch;
+	padding-bottom: 30px;
+}
+
 .title {
 	margin-bottom: 1.5rem;
 	margin-top: 1rem;
@@ -367,6 +377,7 @@ table{
 }
 
 .customer-table td {
+	color: black;
 	font-size: 15px;
 	word-wrap: break-word;
 }
@@ -423,6 +434,10 @@ td{
 
 tr {
 	height: 50px;
+}
+
+tbody > tr {
+	background: white;
 }
 
 .center-column {
@@ -486,7 +501,20 @@ tr {
 .edit-customer-form input[type="email"],
 .edit-customer-form input[type="number"],
 .edit-customer-form input[type="tel"] {
-	background: rgba(255,255,255,.1);
+	border: .5px solid rgb(148, 148, 148);
+	border-radius: 4px;
+	font-size: 15px;
+	margin: 0;
+	padding: 10px;
+	width: 100%;
+	box-sizing: border-box; 
+	background-color: #ffffff;
+	color:#666666;
+	margin-bottom: 10px;
+}
+
+.movie-add-form  input[type="text"],
+.movie-add-form  input[type="number"] {
 	border: none;
 	border-radius: 4px;
 	font-size: 15px;
@@ -495,13 +523,27 @@ tr {
 	padding: 10px;
 	width: 100%;
 	box-sizing: border-box; 
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box; 
-	background-color: #ffffff;
+	background-color: rgb(235, 235, 235);
 	color:#666666;
-	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
 	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
 	margin-bottom: 10px;
+}
+
+#mov-description {
+	border: none;
+	border-radius: 4px;
+	font-size: 15px;
+	margin: 0;
+	outline: 0;
+	padding: 10px;
+	width: 100%;
+	height: 100px;
+	box-sizing: border-box; 
+	background-color: rgb(235, 235, 235);
+	color:#3a3939;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	margin-bottom: 10px;
+	resize: none;
 }
 
 .button-submit{
@@ -563,4 +605,56 @@ tr {
 	background-color: rgb(206, 62, 62);
 	border-radius: 15px;
 	color: white;
+}
+
+/*  =============================================
+	Table Search, Sort, Add forms
+================================================ */
+.form-popup {
+	display: none;
+	position: fixed;
+	width: 400px;
+	height: 400px;
+	max-width: 600px;
+	max-height: 400px;
+	top: 25%;
+	left: calc(50% - 13rem);
+	border: 3px solid #a7a7a7;
+	background-color: white;
+}
+
+.form-container {
+	width: 500px;
+	padding: 10px;
+	background-color: white;
+}
+
+.movie-add-form form {
+	width: 100%
+}
+
+.movie-add-form h3 {
+	font-weight: bold;
+	padding-top: 10px;
+	padding-left: 10px;
+	text-align: center;
+	font-size: 22px;
+	margin-bottom: 5px;
+}
+
+.movie-sort{
+	margin-bottom: 0;
+	margin-left: 4rem;
+}
+
+.genre-list {
+	height: 35px;
+}
+
+.movie-submit {
+	margin-left: 10rem;
+}
+
+.search-movie {
+	margin-left:5rem;
 }
