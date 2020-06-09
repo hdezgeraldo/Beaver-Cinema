@@ -28,8 +28,8 @@ include("database/action.php");	?>
 				<!-- Start query to obtain dropdown results for movies -->
 				<?php
 				$conn = OpenCon();
-				$movie_result = $conn->query("SELECT movie_id, title FROM movies") or die($conn->error);
-				$genre_result = $conn->query("SELECT genre_id, genre_name FROM genres") or die($conn->error);
+				$movie_result = $conn->query("SELECT movie_id, title FROM movies ORDER BY title") or die($conn->error);
+				$genre_result = $conn->query("SELECT genre_id, genre_name FROM genres ORDER BY genre_name") or die($conn->error);
 				?>
 
 				<!-- "Associate Genre" feature -->
@@ -105,7 +105,10 @@ include("database/action.php");	?>
 			<div class="box tbl-header">
 				<?php
 				$mysqli = OpenCon();
-				$result = $mysqli->query("SELECT * FROM movies") or die($mysqli->error);
+				$result = $mysqli->query("SELECT m.title, g.genre_name, m.price, m.num_stock, m.movie_description FROM movies AS m
+				LEFT JOIN movie_genres AS mg ON mg.movie_id=m.movie_id
+				LEFT JOIN genres AS g ON g.genre_id=mg.genre_id
+                ORDER BY m.title") or die($mysqli->error);
 
 				?>
 				<table class="movie-table">
@@ -113,6 +116,7 @@ include("database/action.php");	?>
 					<thead>
 						<tr class="header-row">
 							<th>Title</th>
+							<th>Genre</th>
 							<th>Price</th>
 							<th>In Stock</th>
 							<th>Descripition</th>
@@ -122,6 +126,7 @@ include("database/action.php");	?>
 					<?php	while ($row = $result->fetch_assoc()): ?>
 						<tr>
 							<td><?php echo $row['title']; ?></td>
+							<td><?php echo $row['genre_name']; ?></td>
 							<td class="center-column"><?php echo '$'; echo $row['price']; ?></td>
 							<td class="center-column"><?php echo $row['num_stock']; ?></td>
 							<td><?php echo $row['movie_description']; ?></td>
