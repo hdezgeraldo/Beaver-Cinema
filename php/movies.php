@@ -25,27 +25,60 @@ include("database/action.php");	?>
 					</form>
 				</div>
 
-				<!-- Sort "feature" -- implement at a later date -->
-				<div class="box sort">
-					<!-- <form class="movie-sort" action="">
-							<label for="genre-list">Filter by Genre:</label>
-							<select class="genre-list" name="genre-list">
-								<option value="action">Action</option>
-								<option value="adventure">Adventure</option>
-								<option value="comedy">Comedy</option>
-								<option value="horror">Horror</option>
-							</select>
-							<input type="submit" class="button-submit" value="Submit">
-					</form> -->
+				<!-- Start query to obtain dropdown results for movies -->
+				<?php
+				$conn = OpenCon();
+				$movie_result = $conn->query("SELECT movie_id, title FROM movies") or die($conn->error);
+				$genre_result = $conn->query("SELECT genre_id, genre_name FROM genres") or die($conn->error);
+				?>
+
+				<!-- "Associate Genre" feature -->
+				<div class="box associate">
+					<button onclick="openForm()" class="button-submit genre-submit">Associate Genre</button>
+					<div class="movie-add-form form-popup">
+						<h3>Associate a Genre</h3>
+						<form action="" class="form-container" method="POST" enctype="multipart/form-data">
+							<input type="hidden" name="id" value="">
+							<div class="form-group">
+								<select name="movie-dropdown">
+									<!-- Generate query list and populate dropdown menu -->
+									<?php
+									while($rows = $movie_result->fetch_assoc()){
+										$dd_movie_id = $rows['movie_id'];
+										$dd_movie_title = $rows['title'];
+										echo "<option value='$dd_movie_id'>$dd_movie_title</option>";
+									}
+									?>
+								</select>
+							</div>
+							<div>
+								<select name="genre-dropdown">
+									<!-- Generate query list and populate dropdown menu -->
+									<?php
+									while($genre_rows = $genre_result->fetch_assoc()){
+										$dd_genre_id = $genre_rows['genre_id'];
+										$dd_genre_name = $genre_rows['genre_name'];
+										echo "<option value='$dd_genre_id'>$dd_genre_name</option>";
+									}
+									?>
+								</select>
+							</div>
+							
+							<div class="form-group">
+								<input type="submit" class="button-submit" name="g-submit" value="Submit Genre">
+								<button onclick="closeForm()" class="button-submit">Close Form</button>
+							</div>
+						</form>
+					</div>
 				</div>
 
-				<!-- Insert "feature -->
+				<!-- "Add Movie" feature -->
 				<div class="box insert">
-					<button onclick="openForm()" class="button-submit movie-submit">Add Movie</button>
-					<div class="movie-add-form form-popup">
+					<button onclick="openSecond()" class="button-submit movie-submit">Add Movie</button>
+					<div class="movie-add-form second-form-popup">
 					<h3>Add a new Movie</h3>
 					<form action="" class="form-container" method="POST" enctype="multipart/form-data">
-						<input type="hidden" name="id" value="">
+						<!-- <input type="hidden" name="id" value=""> -->
 						<div class="form-group">
 							<input type="text" name="m-title" value="" class="form-control" placeholder="Enter movie title" required>
 						</div>
@@ -56,13 +89,12 @@ include("database/action.php");	?>
 							<input type="text" name="m-stock" value="" class="form-control" placeholder="Enter number of movies available" required>
 						</div>
 						<div class="form-group">
-							<textarea type="text" name="m-description" id="mov-description" value="" class="form-control" placeholder="Enter movie description" required>
-							</textarea>
+							<textarea type="text" name="m-description" id="mov-description" value="" class="form-control" placeholder="Enter movie description" required></textarea>
 						</div>
 						<div class="form-group">
 							<!-- else, default to "Submit" button for webpage -->
 							<input type="submit" class="button-submit" name="m-submit" value="Submit Changes">
-							<button onclick="closeForm()" class="button-submit">Close Form</button>
+							<button onclick="closeSecond()" class="button-submit">Close Form</button>
 						</div>
 					</form>
 					</div>
