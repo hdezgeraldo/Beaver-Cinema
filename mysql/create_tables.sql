@@ -94,10 +94,10 @@ INSERT INTO `movie_orders` VALUES (1,1,2),(2,4,2),(8,3,3),(15,2,3),(12,5,1);
 UNLOCK TABLES;
 
 --
--- Table structure for table `actor`
+-- Table structure for table `actors`
 --
-DROP TABLE IF EXISTS `actor`;
-CREATE TABLE `actor` (
+DROP TABLE IF EXISTS `actors`;
+CREATE TABLE `actors` (
 	`actor_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
 	`first_name` varchar(45) NOT NULL,
 	`last_name` varchar(45) NOT NULL,
@@ -108,11 +108,11 @@ CREATE TABLE `actor` (
 ) ENGINE=InnoDB AUTO_INCREMENT=200 DEFAULT CHARSET=utf8;
 
 --
--- Insertion queries for table `actor`
+-- Insertion queries for table `actors`
 -- Additional information obtained from IMDB.com
 --
-LOCK TABLES `actor` WRITE;
-INSERT INTO `actor` VALUES (1,'Brad','Pitt','Chiseled good looks','Oklahoma, USA'),(2,'Matt', 'Damon','Has older brother who sculpts', 'Massachusetts, USA'),(3, 'Dustin', 'Hoffman', 'Known as being a perfectionist', 'Los Angeles, USA'),(4, 'Nicholas', 'Hoult','Has distinctive vulcan eyebrows','Berkshire, UK'), (5, 'James', 'Olson','Discovered while acting in a local play in New York','Illinois, USA'), (6, 'Al', 'Pacino','Jet black hair and dark owl eyes','New York, USA'), (7, 'Joel', 'Edgerton','Razor-sharp cheekbones','New South Wales, Australia'), (8, 'Elijah', 'Wood','Short hobbit stature', 'Iowa, USA'), (9, 'Jake', 'Gyllenhaal','Blue eyes and brown hair','Los Angeles, USA'), (10, 'Mark','Wahlberg','Frequently plays men of authority or criminals','Massachusetts, USA'), (11, 'Matthew', 'McConahay','Known for saying "Alright, alright, alright!"','Texas, USA'), (12, 'Bryan', 'Fogel','Known for voluntary committing himself to doping for a film','Colorado, USA'), (13, 'Robin', 'Williams','Dinstinctive low-pitch and extremely versatile voice','Illinois, USA'), (14, 'Will', 'Smith','Known for his catchphrase, "Aw, hell no!"','Pennsylvania, USA'), (15, 'Jennifer', 'Carpenter','Her ex-husband was her "brother" in the dissapointing series Dexter','Kentucky, USA');
+LOCK TABLES `actors` WRITE;
+INSERT INTO `actors` VALUES (1,'Brad','Pitt','Chiseled good looks','Oklahoma, USA'),(2,'Matt', 'Damon','Has older brother who sculpts', 'Massachusetts, USA'),(3, 'Dustin', 'Hoffman', 'Known as being a perfectionist', 'Los Angeles, USA'),(4, 'Nicholas', 'Hoult','Has distinctive vulcan eyebrows','Berkshire, UK'), (5, 'James', 'Olson','Discovered while acting in a local play in New York','Illinois, USA'), (6, 'Al', 'Pacino','Jet black hair and dark owl eyes','New York, USA'), (7, 'Joel', 'Edgerton','Razor-sharp cheekbones','New South Wales, Australia'), (8, 'Elijah', 'Wood','Short hobbit stature', 'Iowa, USA'), (9, 'Jake', 'Gyllenhaal','Blue eyes and brown hair','Los Angeles, USA'), (10, 'Mark','Wahlberg','Frequently plays men of authority or criminals','Massachusetts, USA'), (11, 'Matthew', 'McConahay','Known for saying "Alright, alright, alright!"','Texas, USA'), (12, 'Bryan', 'Fogel','Known for voluntary committing himself to doping for a film','Colorado, USA'), (13, 'Robin', 'Williams','Dinstinctive low-pitch and extremely versatile voice','Illinois, USA'), (14, 'Will', 'Smith','Known for his catchphrase, "Aw, hell no!"','Pennsylvania, USA'), (15, 'Jennifer', 'Carpenter','Her ex-husband was her "brother" in the dissapointing series Dexter','Kentucky, USA');
 UNLOCK TABLES;
 
 --
@@ -124,7 +124,7 @@ CREATE TABLE `movie_actors` (
 	`actor_id` int(11) unsigned NOT NULL,
 	PRIMARY KEY (`movie_id`,`actor_id`),
 	CONSTRAINT `fk_movie_actors_movie` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`movie_id`) ON UPDATE CASCADE,
-	CONSTRAINT `fk_movie_actors_actor` FOREIGN KEY (`actor_id`) REFERENCES `actor` (`actor_id`) ON UPDATE CASCADE
+	CONSTRAINT `fk_movie_actors_actor` FOREIGN KEY (`actor_id`) REFERENCES `actors` (`actor_id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

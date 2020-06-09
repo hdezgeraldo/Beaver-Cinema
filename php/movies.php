@@ -65,7 +65,7 @@ include("database/action.php");	?>
 							</div>
 							
 							<div class="form-group">
-								<input type="submit" class="button-submit" name="g-submit" value="Submit Genre">
+								<input type="submit" class="button-submit" name="g-submit" value="Associate">
 								<button onclick="closeForm()" class="button-submit">Close Form</button>
 							</div>
 						</form>

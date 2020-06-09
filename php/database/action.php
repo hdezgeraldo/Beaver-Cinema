@@ -180,8 +180,62 @@
 		header('location:../movies.php');
 		
 		// success messages to echo at update.php
+		$_SESSION['response']="SUCCESSFULLY ASSOCIATED M:M TABLE";
+		$_SESSION['res_type']="success-alert";
+	}
+
+	/***********************************************************
+	 * Type: HTTP POST method
+	 * Webpage: actors.php
+	 * Description: This will retrieve values submitted from the
+	 * 'Add Actor' form, and insert them into the database.
+	 **********************************************************/
+	if(isset($_POST['add-actor-submit'])){
+
+		// set variables
+		$afirst = $_POST['a-first'];
+		$alast = $_POST['a-last'];
+		$atrade = $_POST['a-trademark'];
+		$aorigin = $_POST['a-origin'];
+
+		// begin query
+		$conn->query("INSERT INTO actors (first_name, last_name, trademark, birth_location) 
+						VALUES ('$afirst', '$alast', '$atrade', '$aorigin')")
+						or die($conn->error);
+		
+		// return to current page
+		header('location:../actors.php');
+		
+		// success messages to echo at update.php
 		$_SESSION['response']="SUCCESSFULLY INSERTED TO DB";
 		$_SESSION['res_type']="success-alert";
 	}
+
+	/***********************************************************
+	 * Type: HTTP POST method
+	 * Webpage: actors.php
+	 * Description: This will retrieve values submitted from the
+	 * 'Associate Movie' form, and insert them into the database.
+	 * This serves to insert into a relational table (M-M)
+	 **********************************************************/
+	if(isset($_POST['assoc-a-submit'])){
+
+		// set variables
+		$movieID = $_POST['movie-dropdown'];
+		$actorID = $_POST['actor-dropdown'];
+
+		// begin query
+		$conn->query("INSERT INTO movie_actors (movie_id, actor_id) 
+						VALUES ($movieID, $actorID)")
+						or die($conn->error);
+		
+		// return to current page
+		header('location:../actors.php');
+		
+		// success messages to echo at update.php
+		$_SESSION['response']="SUCCESSFULLY ASSOCIATED M:M TABLE";
+		$_SESSION['res_type']="success-alert";
+	}
+	
 
 ?>
