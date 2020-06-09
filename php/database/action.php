@@ -158,4 +158,30 @@
 		$_SESSION['res_type']="success-alert";
 	}
 
+	/***********************************************************
+	 * Type: HTTP POST method
+	 * Webpage: movies.php
+	 * Description: This will retrieve values submitted from the
+	 * 'Associate Genre' form, and insert them into the database.
+	 * This serves to insert into a relational table (M-M)
+	 **********************************************************/
+	if(isset($_POST['g-submit'])){
+
+		// set variables
+		$movieID = $_POST['movie-dropdown'];
+		$genreID = $_POST['genre-dropdown'];
+
+		// begin query
+		$conn->query("INSERT INTO movie_genres (movie_id, genre_id) 
+						VALUES ($movieID, $genreID)")
+						or die($conn->error);
+		
+		// return to current page
+		header('location:../movies.php');
+		
+		// success messages to echo at update.php
+		$_SESSION['response']="SUCCESSFULLY INSERTED TO DB";
+		$_SESSION['res_type']="success-alert";
+	}
+
 ?>
