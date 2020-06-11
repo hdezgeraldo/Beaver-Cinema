@@ -19,6 +19,7 @@ include("database/action.php");	?>
 			<div class="grid-movie">
 				<!-- Search "feature" -->
 				<div class="box search">
+					<!-- Send values to another php page to run query results -->
 					<form action="search_movies.php" method="POST">
 						<input type="text" class="search-movie" name="movie" placeholder="Enter movie name">
 						<input type="submit" class="button-submit" name="search-movie" value="Search">

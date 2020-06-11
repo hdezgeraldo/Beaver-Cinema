@@ -22,7 +22,7 @@
 						<ul class="drop-nav">
 							<li><a href="movies.php">Movies</a></li>
 							<li><a href="actors.php">Actors</a></li>
-							<li><a href="index.php">Genres</a></li>
+							<li><a href="genres.php">Genres</a></li>
 						</ul>
 					</li>
 					<li><a href="index.php">Login</a></li>

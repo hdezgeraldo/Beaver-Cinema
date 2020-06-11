@@ -7,30 +7,42 @@
 
 	// Default variables
 	$isEdit = false;
-	$output = '';
-
 
 	/***********************************************************
 	 * Type: HTTP POST method
 	 * Webpage: orders.php
 	 * Description: This will enter data from the Orders form.
+	 * It will require input from two separate tables, and update
+	 * the available stock from Movies.
 	 **********************************************************/
-	if(isset($_POST['submit'])){
+	if(isset($_POST['submit-order'])){
 
 		// set variables
-		$first_name = $_POST['first_name'];
-		$last_name = $_POST['last_name'];
-		$address = $_POST['address'];
-		$phone = $_POST['phone'];
-		$email = $_POST['email'];
+		$movieID = $_POST['movie-dropdown'];
+		$customerID = $_POST['customer-dropdown'];
+		$creditNum = $_POST['credit_number'];
+		$creditExp = $_POST['credit_exp'];
 
-		// begin query
-		$conn->query("INSERT INTO customers (first_name, last_name, address, phone, email) 
-						VALUES ('$first_name', '$last_name', '$address', $phone, '$email')")
+		// begin insertion query to `orders` table
+		$conn->query("INSERT INTO orders (customer_id, credit_number, credit_exp, order_date) 
+						VALUES ($customerID, $creditNum, $creditExp, NOW())")
 						or die($conn->error);
 		
+		// begin order_id query
+		$result = $conn->query("SELECT order_id FROM orders
+					  WHERE customer_id=$customerID AND credit_number=$creditNum AND 
+					  credit_exp=$creditExp")
+					  or die($conn->error);
+		$row = $result->fetch_assoc();
+		$orderID = $row['order_id'];
+
+		// begin insertion query to relational table
+		$conn->query("INSERT INTO movie_orders (movie_id, order_id, quantity_ordered) 
+						VALUES ($movieID, $orderID, 1)")
+						or die($conn->error);
+
 		// return to current page
-		header('location:../customers.php');
+		header('location:../orders.php');
 		
 		// success messages to echo at update.php
 		$_SESSION['response']="SUCCESSFULLY INSERTED TO DB";

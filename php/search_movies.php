@@ -23,7 +23,7 @@ include("templates/header.php");
             INNER JOIN movie_genres AS mg ON m.movie_id=mg.movie_id
             INNER JOIN genres AS g ON g.genre_id=mg.genre_id
             INNER JOIN movie_actors AS ma ON ma.movie_id=m.movie_id
-            INNER JOIN actor AS a ON a.actor_id=ma.actor_id
+            INNER JOIN actors AS a ON a.actor_id=ma.actor_id
             WHERE m.title = '$vmovie_name'") or die($conn->error);
 
             $count = $result->num_rows;

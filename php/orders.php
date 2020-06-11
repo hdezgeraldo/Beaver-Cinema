@@ -29,43 +29,43 @@ include("templates/header.php");	?>
 					?>
 
 					<form action="database/action.php" method="POST" enctype="multipart/form-data">
-							<div class="form-group">
-								<h4>Select Movie</h4>
-								<select class="dropdown-form" name="movie-dropdown">
-									<!-- Generate query list and populate dropdown menu -->
-									<?php
-									while($rows = $movie_result->fetch_assoc()){
-										$dd_movie_id = $rows['movie_id'];
-										$dd_movie_title = $rows['title'];
-										echo "<option value='$dd_movie_id'>$dd_movie_title</option>";
-									}
-									?>
-								</select>
-							</div>
-							<div class="form-group">
-								<h4>Select Customer</h4>
-								<select class="dropdown-form" name="customer-dropdown">
-									<!-- Generate query list and populate dropdown menu -->
-									<?php
-									while($rows = $customer_result->fetch_assoc()){
-										$dd_customer_id = $rows['customer_id'];
-										$dd_first = $rows['first_name'];
-										$dd_last = $rows['last_name'];
-										echo "<option value='$dd_customer_id'>$dd_first $dd_last</option>";
-									}
-									?>
-								</select>
-							</div>
-							<div class="form-group">
-								<h4>Enter Credit Card</h4>
-								<input type="number" name="credit_number" class="form-control" placeholder="Enter credit card number (10 digits)" required>
-							</div>
-							<div class="form-group">
-								<input type="number" name="credit_exp" class="form-control" placeholder="Enter credit card exp (MMYY)" required>
-							</div>
-							<div class="form-group">
-								<input type="submit" class="button-submit" name="submit" value="Submit Order">
-							</div>
+						<div class="form-group">
+							<h4>Select Movie</h4>
+							<select class="dropdown-form" name="movie-dropdown">
+								<!-- Generate query list and populate dropdown menu -->
+								<?php
+								while($rows = $movie_result->fetch_assoc()){
+									$dd_movie_id = $rows['movie_id'];
+									$dd_movie_title = $rows['title'];
+									echo "<option value='$dd_movie_id'>$dd_movie_title</option>";
+								}
+								?>
+							</select>
+						</div>
+						<div class="form-group">
+							<h4>Select Customer</h4>
+							<select class="dropdown-form" name="customer-dropdown">
+								<!-- Generate query list and populate dropdown menu -->
+								<?php
+								while($rows = $customer_result->fetch_assoc()){
+									$dd_customer_id = $rows['customer_id'];
+									$dd_first = $rows['first_name'];
+									$dd_last = $rows['last_name'];
+									echo "<option value='$dd_customer_id'>$dd_first $dd_last</option>";
+								}
+								?>
+							</select>
+						</div>
+						<div class="form-group">
+							<h4>Enter Credit Card</h4>
+							<input type="number" name="credit_number" class="form-control" placeholder="Enter credit card number (10 digits)" min="1111111111" max="9999999999" required>
+						</div>
+						<div class="form-group">
+							<input type="number" name="credit_exp" class="form-control" placeholder="Enter credit card exp (MMYY)" min="0120" max="1299" required>
+						</div>
+						<div class="form-group">
+							<input type="submit" class="button-submit" name="submit-order" value="Submit Order">
+						</div>
 					</form>
 				</div>
 				<!-- This is the Table section -->
@@ -75,9 +75,10 @@ include("templates/header.php");	?>
 
 						$mysqli = OpenCon();
 						$result = $mysqli->query("SELECT o.order_id, o.order_date, c.first_name, c.last_name, o.credit_number, o.credit_exp, m.title, m.price FROM customers AS c
-						LEFT JOIN orders AS o ON o.customer_id=c.customer_id
-						LEFT JOIN movie_orders AS mo ON o.order_id=mo.order_id
-						LEFT JOIN movies AS m ON m.movie_id=mo.movie_id") or die($mysqli->error);
+						INNER JOIN orders AS o ON o.customer_id=c.customer_id
+						INNER JOIN movie_orders AS mo ON o.order_id=mo.order_id
+						INNER JOIN movies AS m ON m.movie_id=mo.movie_id
+						ORDER BY o.order_id") or die($mysqli->error);
 
 					?>
 					<table class="orders-table">
