@@ -12,7 +12,8 @@
 	<div class="wrap">
 		<header class="main-header">
 			<div class="container c-header">
-			<a href="#"><img src="../public/images/beaver_logo.png" class="logo"></a>
+			<!-- Refresh current page -->
+			<a href="javascript:window.location.href=window.location.href"><img src="../public/images/beaver_logo.png" class="logo"></a>
 				<ul class="main-nav">
 					<li><a href="orders.php">Orders</a></li>
 					<li><a href="customers.php">Customers</a></li>
