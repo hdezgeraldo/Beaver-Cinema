@@ -37,7 +37,7 @@ include("database/action.php");	?>
 						<form action="" class="form-container" method="POST" enctype="multipart/form-data">
 							<input type="hidden" name="id" value="">
 							<div class="form-group">
-								<select name="movie-dropdown">
+								<select class="dropdown-form" name="movie-dropdown">
 									<!-- Generate movie list and populate dropdown menu -->
 									<?php
 									while($rows = $movie_result->fetch_assoc()){
@@ -49,7 +49,7 @@ include("database/action.php");	?>
 								</select>
 							</div>
 							<div>
-								<select name="actor-dropdown">
+								<select class="dropdown-form" name="actor-dropdown">
 									<!-- Generate actor list and populate dropdown menu -->
 									<?php
 									while($actor_rows = $actor_result->fetch_assoc()){

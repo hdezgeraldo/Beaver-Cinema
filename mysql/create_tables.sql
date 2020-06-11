@@ -4,10 +4,10 @@
 -- ------------------------------------------------------
 
 --
--- Table structure for table `customer`
+-- Table structure for table `customers`
 --
-DROP TABLE IF EXISTS `customer`;
-CREATE TABLE `customer` (
+DROP TABLE IF EXISTS `customers`;
+CREATE TABLE `customers` (
 	`customer_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
 	`first_name` varchar(45) NOT NULL,
 	`last_name` varchar(45) NOT NULL,
@@ -18,10 +18,10 @@ CREATE TABLE `customer` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 --
--- Insertion queries for table `customer`
+-- Insertion queries for table `customers`
 --
-LOCK TABLES `customer` WRITE;
-INSERT INTO `customer` VALUES (1,'Jimmy', 'John', '4134 Monroe Ave, Corvallis, OR 97330', 5034150290, 'jjohn@gmail.com'), (2,'Carla', 'Ruiz', '4153 Jefferson Ave, Portland, OR 97230', 5034150146, 'carlaruiz@gmail.com'), (3,'Joseph', 'McTavern', '2351 Paola Drive, Beaverton, OR 97204', 5034150913, 'josephtavern@gmail.com'), (4,'Miguel', 'Espinoza', '12315 Stark Street, Gresham, OR 97033', 5039310492, 'migueltheking@gmail.com'), (5,'Leonardo', 'Robertson', '1951 Stone Drive, Portland, OR 97230', 5034157592, 'leonardoception@gmail.com');
+LOCK TABLES `customers` WRITE;
+INSERT INTO `customers` VALUES (1,'Jimmy', 'John', '4134 Monroe Ave, Corvallis, OR 97330', 5034150290, 'jjohn@gmail.com'), (2,'Carla', 'Ruiz', '4153 Jefferson Ave, Portland, OR 97230', 5034150146, 'carlaruiz@gmail.com'), (3,'Joseph', 'McTavern', '2351 Paola Drive, Beaverton, OR 97204', 5034150913, 'josephtavern@gmail.com'), (4,'Miguel', 'Espinoza', '12315 Stark Street, Gresham, OR 97033', 5039310492, 'migueltheking@gmail.com'), (5,'Leonardo', 'Robertson', '1951 Stone Drive, Portland, OR 97230', 5034157592, 'leonardoception@gmail.com');
 UNLOCK TABLES;
 
 --
@@ -34,24 +34,16 @@ CREATE TABLE `orders` (
 	`credit_number` int(11) NOT NULL,
 	`credit_exp` int(11) NOT NULL,
 	`order_date` datetime NOT NULL,
-	`delivery` varchar(255) NOT NULL,
 	PRIMARY KEY (`order_id`),
-	CONSTRAINT `fk_order_customer` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE SET NULL
+	CONSTRAINT `fk_order_customer` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`) ON DELETE SET NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 --
 -- Insertion queries for table `orders`
 --
 LOCK TABLES `orders` WRITE;
-INSERT INTO `orders` VALUES (1, 1, 1234567812, 0824, '2020-01-02', 'Delivery'), (2, 5, 1234523456, 1024, '2020-03-25', 'Delivery'), (3, 2, 1867812345, 1222, '2020-04-15', 'Pickup'), (4, 3, 1863456778, 0622, '2020-03-22', 'Delivery'), (5, 4, 9412345678, 0323, '2020-01-29', 'Delivery');
+INSERT INTO `orders` VALUES (1, 1, 1234567812, 0824, '2020-01-02'), (2, 5, 1234523456, 1024, '2020-03-25'), (3, 2, 1867812345, 1222, '2020-04-15'), (4, 3, 1863456778, 0622, '2020-03-22'), (5, 4, 941234567, 0323, '2020-01-29');
 UNLOCK TABLES;
--- INSERT INTO `orders` (customer_id, credit_number, credit_exp, order_date, delivery) VALUES (
--- 	(SELECT customer_id FROM customer WHERE first_name='Jimmy' AND last_name='John'),
--- 	1234567812345678,
--- 	0824,
--- 	'2020-01-02',
--- 	'Delivery'
--- );
 
 --
 -- Table structure for table `movies`
@@ -64,7 +56,18 @@ CREATE TABLE `movies` (
 	`num_stock` int(11) unsigned DEFAULT NULL,
 	`movie_description` text,
 	PRIMARY KEY (`movie_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+--
+-- Create a trigger to automatically insert 'num_stock' value every time an INSERT
+-- occurs in 'movie_orders'
+--
+-- CREATE TRIGGER `stock_integrity` BEFORE INSERT
+-- ON test1
+-- FOR EACH ROW
+-- 	SET NEW.number3=NEW.number1+NEW.number2;
+
 
 --
 -- Insertion queries for table `movies`
@@ -90,7 +93,7 @@ CREATE TABLE `movie_orders` (
 -- Insertion queries for table `movie_orders`
 --
 LOCK TABLES `movie_orders` WRITE;
-INSERT INTO `movie_orders` VALUES (1,1,2),(2,4,2),(8,3,3),(15,2,3),(12,5,1);
+INSERT INTO `movie_orders` VALUES (1,1,1),(2,4,1),(8,3,1),(15,2,1),(12,5,1);
 UNLOCK TABLES;
 
 --
@@ -142,7 +145,7 @@ CREATE TABLE `genres` (
 	`genre_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
 	`genre_name` varchar(25) NOT NULL,
 	PRIMARY KEY (`genre_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=300 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 --
 -- Insertion queries for table `genres`

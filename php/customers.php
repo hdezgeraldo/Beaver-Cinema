@@ -41,11 +41,11 @@ include("templates/header.php");	?>
 							<div class="form-group">
 								<!-- check if user clicked "Edit" button -->
 								<?php if($isEdit==true){ ?>
-									<input type="submit" class="button-edit" name="edit" value="Submit Customer">
+									<input type="submit" class="button-edit" name="edit" value="Submit Changes">
 								
 								<!-- else, default to "Submit" button for webpage -->
 								<?php	}else{ ?>
-									<input type="submit" class="button-submit" name="submit" value="Submit Changes">
+									<input type="submit" class="button-submit" name="submit" value="Submit Customer">
 								<?php	} ?>
 							</div>
 					</form>
@@ -56,7 +56,7 @@ include("templates/header.php");	?>
 					<?php
 
 						$mysqli = OpenCon();
-						$result = $mysqli->query("SELECT * FROM customer") or die($mysqli->error);
+						$result = $mysqli->query("SELECT * FROM customers") or die($mysqli->error);
 
 					?>
 					<table class="customer-table">

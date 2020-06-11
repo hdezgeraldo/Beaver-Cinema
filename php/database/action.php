@@ -9,11 +9,39 @@
 	$isEdit = false;
 	$output = '';
 
+
+	/***********************************************************
+	 * Type: HTTP POST method
+	 * Webpage: orders.php
+	 * Description: This will enter data from the Orders form.
+	 **********************************************************/
+	if(isset($_POST['submit'])){
+
+		// set variables
+		$first_name = $_POST['first_name'];
+		$last_name = $_POST['last_name'];
+		$address = $_POST['address'];
+		$phone = $_POST['phone'];
+		$email = $_POST['email'];
+
+		// begin query
+		$conn->query("INSERT INTO customers (first_name, last_name, address, phone, email) 
+						VALUES ('$first_name', '$last_name', '$address', $phone, '$email')")
+						or die($conn->error);
+		
+		// return to current page
+		header('location:../customers.php');
+		
+		// success messages to echo at update.php
+		$_SESSION['response']="SUCCESSFULLY INSERTED TO DB";
+		$_SESSION['res_type']="success-alert";
+	}
+
 	/***********************************************************
 	 * Type: HTTP POST method
 	 * Webpage: customers.php
 	 * Description: If the user enters values in the 'add new
-	 * customer' form and presses submit, then values will be
+	 * customers' form and presses submit, then values will be
 	 * updated to the DB.
 	 **********************************************************/
 	if(isset($_POST['submit'])){
@@ -26,7 +54,7 @@
 		$email = $_POST['email'];
 
 		// begin query
-		$conn->query("INSERT INTO customer (first_name, last_name, address, phone, email) 
+		$conn->query("INSERT INTO customers (first_name, last_name, address, phone, email) 
 						VALUES ('$first_name', '$last_name', '$address', $phone, '$email')")
 						or die($conn->error);
 		
@@ -49,7 +77,7 @@
 		$id = $_GET['delete'];
 
 		// begin query
-		$conn->query("DELETE FROM customer
+		$conn->query("DELETE FROM customers
 					  WHERE customer_id=$id")
 					  or die($conn->error);
 
@@ -70,7 +98,7 @@
 		// set variable
 		$id = $_GET['edit'];
 		// begin query
-		$result = $conn->query("SELECT * FROM customer
+		$result = $conn->query("SELECT * FROM customers
 					  WHERE customer_id=$id")
 					  or die($conn->error);
 		$row = $result->fetch_assoc();
@@ -100,7 +128,7 @@
 		$email = $_POST['email'];
 
 		// begin update query
-		$conn->query("UPDATE customer SET first_name='$first_name', last_name='$last_name', address='$address', phone='$phone', email='$email' WHERE customer_id=$id") or die($conn->error);
+		$conn->query("UPDATE customers SET first_name='$first_name', last_name='$last_name', address='$address', phone='$phone', email='$email' WHERE customer_id=$id") or die($conn->error);
 
 		// return to current page
 		header('location:../customers.php');
@@ -117,7 +145,7 @@
 	 **********************************************************/
 	if(isset($_GET['c_details'])){
 		$id = $_GET['c_details'];
-		$result = $conn->query("SELECT first_name, last_name, address, credit_number, credit_exp FROM customer AS c
+		$result = $conn->query("SELECT first_name, last_name, address, credit_number, credit_exp FROM customers AS c
 		INNER JOIN orders AS o ON o.customer_id=c.customer_id
 		WHERE c.customer_id=$id") or die($conn->error);
 		$row = $result->fetch_assoc();

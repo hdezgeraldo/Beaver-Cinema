@@ -38,9 +38,8 @@ include("database/action.php");	?>
 					<div class="movie-add-form form-popup">
 						<h3>Associate a Genre</h3>
 						<form action="" class="form-container" method="POST" enctype="multipart/form-data">
-							<input type="hidden" name="id" value="">
 							<div class="form-group">
-								<select name="movie-dropdown">
+								<select class="dropdown-form" name="movie-dropdown">
 									<!-- Generate query list and populate dropdown menu -->
 									<?php
 									while($rows = $movie_result->fetch_assoc()){
@@ -52,7 +51,7 @@ include("database/action.php");	?>
 								</select>
 							</div>
 							<div>
-								<select name="genre-dropdown">
+								<select class="dropdown-form" name="genre-dropdown">
 									<!-- Generate query list and populate dropdown menu -->
 									<?php
 									while($genre_rows = $genre_result->fetch_assoc()){
@@ -78,18 +77,17 @@ include("database/action.php");	?>
 					<div class="movie-add-form second-form-popup">
 					<h3>Add a new Movie</h3>
 					<form action="" class="form-container" method="POST" enctype="multipart/form-data">
-						<!-- <input type="hidden" name="id" value=""> -->
 						<div class="form-group">
-							<input type="text" name="m-title" value="" class="form-control" placeholder="Enter movie title" required>
+							<input type="text" name="m-title" class="form-control" placeholder="Enter movie title" required>
 						</div>
 						<div class="form-group">
-							<input type="text" name="m-price" value="" class="form-control" placeholder="Enter movie price ($)" required>
+							<input type="text" name="m-price" class="form-control" placeholder="Enter movie price ($)" required>
 						</div>
 						<div class="form-group">
-							<input type="text" name="m-stock" value="" class="form-control" placeholder="Enter number of movies available" required>
+							<input type="text" name="m-stock" class="form-control" placeholder="Enter number of movies available" required>
 						</div>
 						<div class="form-group">
-							<textarea type="text" name="m-description" id="mov-description" value="" class="form-control" placeholder="Enter movie description" required></textarea>
+							<textarea type="text" name="m-description" id="mov-description" class="form-control" placeholder="Enter movie description" required></textarea>
 						</div>
 						<div class="form-group">
 							<!-- else, default to "Submit" button for webpage -->

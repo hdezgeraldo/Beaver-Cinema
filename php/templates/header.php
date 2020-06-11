@@ -12,7 +12,7 @@
 	<div class="wrap">
 		<header class="main-header">
 			<div class="container c-header">
-			<a href="index.php"><img src="../public/images/beaver_logo.png" class="logo"></a>
+			<a href="#"><img src="../public/images/beaver_logo.png" class="logo"></a>
 				<ul class="main-nav">
 					<li><a href="orders.php">Orders</a></li>
 					<li><a href="customers.php">Customers</a></li>
@@ -21,9 +21,10 @@
 						<ul class="drop-nav">
 							<li><a href="movies.php">Movies</a></li>
 							<li><a href="actors.php">Actors</a></li>
-							<li><a href="genres.php">Genres</a></li>
+							<li><a href="index.php">Genres</a></li>
 						</ul>
 					</li>
+					<li><a href="index.php">Login</a></li>
 				</ul>
 			</div>
 		</header>
