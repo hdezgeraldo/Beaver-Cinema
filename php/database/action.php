@@ -236,6 +236,29 @@
 		$_SESSION['response']="SUCCESSFULLY ASSOCIATED M:M TABLE";
 		$_SESSION['res_type']="success-alert";
 	}
+
+	/***********************************************************
+	 * Type: HTTP POST method
+	 * Webpage: genres.php
+	 * Description: 
+	 **********************************************************/
+	if(isset($_POST['add-genre-submit'])){
+
+		// set variables
+		$gname = $_POST['a-genre'];
+
+		// begin query
+		$conn->query("INSERT INTO genres (genre_name) 
+						VALUES ('$gname')")
+						or die($conn->error);
+		
+		// return to current page
+		header('location:../genres.php');
+		
+		// success messages to echo at update.php
+		$_SESSION['response']="SUCCESSFULLY INSERTED TO DB";
+		$_SESSION['res_type']="success-alert";
+	}
 	
 
 ?>

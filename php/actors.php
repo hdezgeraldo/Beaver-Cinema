@@ -75,18 +75,17 @@ include("database/action.php");	?>
 					<div class="movie-add-form second-form-popup">
 					<h3>Add a new Actor</h3>
 					<form action="" class="form-container" method="POST" enctype="multipart/form-data">
-						<!-- <input type="hidden" name="id" value=""> -->
 						<div class="form-group">
-							<input type="text" name="a-first" value="" class="form-control" placeholder="Enter first name" required>
+							<input type="text" name="a-first" class="form-control" placeholder="Enter first name" required>
 						</div>
 						<div class="form-group">
-							<input type="text" name="a-last" value="" class="form-control" placeholder="Enter last name" required>
+							<input type="text" name="a-last" class="form-control" placeholder="Enter last name" required>
 						</div>
 						<div class="form-group">
-							<input type="text" name="a-trademark" value="" class="form-control" placeholder="Enter trademark" required>
+							<input type="text" name="a-trademark" class="form-control" placeholder="Enter trademark" required>
 						</div>
 						<div class="form-group">
-							<input type="text" name="a-origin" value="" class="form-control" placeholder="Enter city of origin" required>
+							<input type="text" name="a-origin" class="form-control" placeholder="Enter city of origin" required>
 						</div>
 						<div class="form-group">
 							<!-- else, default to "Submit" button for webpage -->
