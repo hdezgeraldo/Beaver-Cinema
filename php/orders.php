@@ -58,10 +58,10 @@ include("templates/header.php");	?>
 						</div>
 						<div class="form-group">
 							<h4>Enter Credit Card</h4>
-							<input type="number" name="credit_number" class="form-control" placeholder="Enter credit card number (10 digits)" min="1111111111" max="9999999999" required>
+							<input type="text" name="credit_number" class="form-control" placeholder="Enter credit card number (16 digits)" maxlength="16" pattern="\d{16}" title="please enter 16 digits" required>
 						</div>
 						<div class="form-group">
-							<input type="number" name="credit_exp" class="form-control" placeholder="Enter credit card exp (MMYY)" min="0120" max="1299" required>
+							<input type="text" name="credit_exp" class="form-control" placeholder="Enter credit card exp (MMYY)" maxlength="4" pattern="\d{4}" title="please enter 4 digits" required>
 						</div>
 						<div class="form-group">
 							<input type="submit" class="button-submit" name="submit-order" value="Submit Order">
@@ -84,11 +84,11 @@ include("templates/header.php");	?>
 					<table class="orders-table">
 						<thead>
 							<tr class="header-row">
-								<th>Order #</th>
+								<th>#</th>
 								<th>Order Date</th>
 								<th>Customer</th>
 								<th>CC Number</th>
-								<th>CC Exp</th>
+								<th>Exp</th>
 								<th>Item</th>
 								<th>Total</th>
 							</tr>

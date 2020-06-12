@@ -31,7 +31,7 @@ DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
 	`order_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
 	`customer_id` int(11) unsigned,
-	`credit_number` int(11) NOT NULL,
+	`credit_number` bigint(20) NOT NULL,
 	`credit_exp` int(11) NOT NULL,
 	`order_date` datetime NOT NULL,
 	PRIMARY KEY (`order_id`),
@@ -42,7 +42,7 @@ CREATE TABLE `orders` (
 -- Insertion queries for table `orders`
 --
 LOCK TABLES `orders` WRITE;
-INSERT INTO `orders` VALUES (1, 1, 1234567812, 0824, '2020-01-02'), (2, 5, 1234523456, 1024, '2020-03-25'), (3, 2, 1867812345, 1222, '2020-04-15'), (4, 3, 1863456778, 0622, '2020-03-22'), (5, 4, 941234567, 0323, '2020-01-29');
+INSERT INTO `orders` VALUES (1, 1, 2275007857476081, 0824, '2020-01-02'), (2, 5, 3773128853667329, 1024, '2020-03-25'), (3, 2, 7542439624602404, 1222, '2020-04-15'), (4, 3, 1509201838092390, 0622, '2020-03-22'), (5, 4, 1544614337497759, 0323, '2020-01-29');
 UNLOCK TABLES;
 
 --

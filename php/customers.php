@@ -33,7 +33,7 @@ include("templates/header.php");	?>
 								<input type="text" name="address" value="<?php echo $address; ?>" class="form-control" placeholder="Enter street, city, state, zip" required>
 							</div>
 							<div class="form-group">
-								<input type="text" name="phone" value="<?php echo $phone; ?>" class="form-control" placeholder="Enter phone number" required>
+								<input type="text" name="phone" value="<?php echo $phone; ?>" class="form-control" placeholder="Enter phone number" maxlength="10" pattern="\d{10}" title="please enter 10 digits" required>
 							</div>
 							<div class="form-group">
 								<input type="text" name="email" value="<?php echo $email; ?>" class="form-control" placeholder="Enter email address" required>

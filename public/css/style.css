@@ -387,10 +387,23 @@ table{
 	word-wrap: break-word;
 }
 
-.orders-table td:nth-child(1), .orders-table th:nth-child(1),
+.orders-table td:nth-child(1), .orders-table th:nth-child(1){
+	width: 50px;
+	text-align: center;
+}
+
+.orders-table td:nth-child(2), .orders-table th:nth-child(2){
+	width: 125px;
+}
+
 .orders-table td:nth-child(5), .orders-table th:nth-child(5),
 .orders-table td:nth-child(7), .orders-table th:nth-child(7){
-	width: 85px;
+	width: 70px;
+}
+
+.orders-table td:nth-child(1), .orders-table th:nth-child(3){
+	width: 120px;
+	word-wrap: break-word;
 }
 
 .customer-table td:nth-child(1), .customer-table th:nth-child(1), 
