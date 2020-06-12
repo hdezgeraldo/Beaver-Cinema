@@ -126,14 +126,6 @@ include("database/action.php");	?>
 					</tr>
 					<?php endwhile; ?>
 				</table>
-			
-				<?php
-				function pre_r($array){
-					echo '<pre>';
-					print_r($array);
-					echo '</pre>';
-				}
-				?>
 			</div>
 		</div>
 	</div>

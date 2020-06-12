@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="../public/css/normalize.css">
 	<link rel="stylesheet" href="../public/css/style.css">
 
-	<title>Home Page</title>
+	<title>Beaver Cinema</title>
 </head>
 <body>
 	<div class="wrap">

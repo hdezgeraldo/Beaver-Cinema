@@ -81,7 +81,7 @@
 	/***********************************************************
 	 * Type: HTTP GET method
 	 * Webpage: customers.php
-	 * Description: 
+	 * Description: This will delete a customer from the table
 	 **********************************************************/
 	if(isset($_GET['delete'])){
 
@@ -104,7 +104,8 @@
 	/***********************************************************
 	 * Type: HTTP GET method
 	 * Webpage: customers.php
-	 * Description: 
+	 * Description: This will obtain all information from the
+	 * customer table to disply to the user
 	 **********************************************************/
 	if(isset($_GET['edit'])){
 		// set variable
@@ -128,7 +129,8 @@
 	/***********************************************************
 	 * Type: HTTP POST method
 	 * Webpage: customers.php
-	 * Description: 
+	 * Description: This will allow the user to update any 
+	 * customer's information.
 	 **********************************************************/
 	if(isset($_POST['edit'])){
 		// set variables
@@ -140,7 +142,9 @@
 		$email = $_POST['email'];
 
 		// begin update query
-		$conn->query("UPDATE customers SET first_name='$first_name', last_name='$last_name', address='$address', phone='$phone', email='$email' WHERE customer_id=$id") or die($conn->error);
+		$conn->query("UPDATE customers 
+			SET first_name='$first_name', last_name='$last_name', address='$address', phone='$phone', email='$email' 
+			WHERE customer_id=$id") or die($conn->error);
 
 		// return to current page
 		header('location:../customers.php');
@@ -153,7 +157,8 @@
 	/***********************************************************
 	 * Type: HTTP GET method
 	 * Webpage: customers.php and c_details.php
-	 * Description:
+	 * Description: This will allow to select all the information
+	 * for a specific customer matching the id
 	 **********************************************************/
 	if(isset($_GET['c_details'])){
 		$id = $_GET['c_details'];
@@ -280,7 +285,7 @@
 	/***********************************************************
 	 * Type: HTTP POST method
 	 * Webpage: genres.php
-	 * Description: 
+	 * Description: This will insert a new genre
 	 **********************************************************/
 	if(isset($_POST['add-genre-submit'])){
 
@@ -299,6 +304,4 @@
 		$_SESSION['response']="SUCCESSFULLY INSERTED TO DB";
 		$_SESSION['res_type']="success-alert";
 	}
-	
-
 ?>
