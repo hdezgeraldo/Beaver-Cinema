@@ -79,13 +79,13 @@ include("database/action.php");	?>
 					<h3>Add a new Movie</h3>
 					<form action="" class="form-container" method="POST" enctype="multipart/form-data">
 						<div class="form-group">
-							<input type="text" name="m-title" class="form-control" placeholder="Enter movie title" required>
+							<input type="text" name="m-title" class="form-control" placeholder="Enter movie title" pattern="[a-zA-Z0-9 ]+" title="only alphabet letters allowed" required>
 						</div>
 						<div class="form-group">
-							<input type="text" name="m-price" class="form-control" placeholder="Enter movie price ($)" required>
+							<input type="number" name="m-price" class="form-control" placeholder="Enter movie price ($)" min="0" max="100" step=0.01 title="invalid price" required>
 						</div>
 						<div class="form-group">
-							<input type="text" name="m-stock" class="form-control" placeholder="Enter number of movies available" required>
+							<input type="number" name="m-stock" class="form-control" placeholder="Enter number of movies available" min="0" max="100" title="exceeds storage capacity" required>
 						</div>
 						<div class="form-group">
 							<textarea type="text" name="m-description" id="mov-description" class="form-control" placeholder="Enter movie description" required></textarea>

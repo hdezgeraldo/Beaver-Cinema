@@ -192,8 +192,8 @@
 
 		// begin query
 		$conn->query("INSERT INTO movies (title, price, num_stock, movie_description) 
-						VALUES ('$mtitle', $mprice, $mstock, '$mdescription')")
-						or die($conn->error);
+			VALUES ('$mtitle', $mprice, $mstock, '$mdescription')")
+			or die($conn->error);
 		
 		// return to current page
 		header('location:../movies.php');

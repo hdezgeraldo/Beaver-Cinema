@@ -9,11 +9,11 @@
 DROP TABLE IF EXISTS `customers`;
 CREATE TABLE `customers` (
 	`customer_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-	`first_name` varchar(45) NOT NULL,
-	`last_name` varchar(45) NOT NULL,
-	`address` varchar(45) NOT NULL,
-	`phone` varchar(50) DEFAULT NULL,
-	`email` varchar(50) DEFAULT NULL,
+	`first_name` varchar(255) NOT NULL,
+	`last_name` varchar(255) NOT NULL,
+	`address` varchar(255) NOT NULL,
+	`phone` varchar(255) DEFAULT NULL,
+	`email` varchar(255) DEFAULT NULL,
 	PRIMARY KEY (`customer_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
@@ -102,10 +102,10 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `actors`;
 CREATE TABLE `actors` (
 	`actor_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-	`first_name` varchar(45) NOT NULL,
-	`last_name` varchar(45) NOT NULL,
-	`trademark` varchar(45) NOT NULL,
-	`birth_location` varchar(45) NOT NULL,
+	`first_name` varchar(255) NOT NULL,
+	`last_name` varchar(255) NOT NULL,
+	`trademark` varchar(255) NOT NULL,
+	`birth_location` varchar(255) NOT NULL,
 	PRIMARY KEY (`actor_id`),
 	KEY `idx_actor_first_name` (`first_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=200 DEFAULT CHARSET=utf8;
@@ -143,7 +143,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `genres`;
 CREATE TABLE `genres` (
 	`genre_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-	`genre_name` varchar(25) NOT NULL,
+	`genre_name` varchar(255) NOT NULL,
 	PRIMARY KEY (`genre_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
